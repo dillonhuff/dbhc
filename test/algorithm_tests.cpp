@@ -10,30 +10,41 @@ using namespace std;
 // TODO: Change to dbhc
 namespace gca {
 
-  TEST_CASE("min_e") {
+  TEST_CASE("Min / max") {
 
     vector<int> v{1, 3, 1, 4, 2, -69, 32};
 
-    SECTION("vector of int") {
+    SECTION("min_e vector") {
       int me = min_e(v, [](const int i) { return i; });
       REQUIRE(me == -69);
     }
 
-    SECTION("set of int") {
+    SECTION("min_e set") {
       set<int> s(v.begin(), v.end());
       int me = min_e(s, [](const int i) { return -i; });
       REQUIRE(me == 32);
     }
 
-    SECTION("max_e") {
+    SECTION("min_e vector default") {
+      int me = min_e(v);
+      REQUIRE(me == -69);
+    }
+
+    SECTION("min_e set default") {
+      set<int> s(v.begin(), v.end());
+      int me = min_e(s);
+      REQUIRE(me == -69);
+    }
+    
+    SECTION("max_e vector") {
       int me = max_e(v, [](const int i) { return i; });
       REQUIRE(me == 32);
     }
 
-    SECTION("max_e") {
+    SECTION("max_e set") {
       set<int> s(v.begin(), v.end());
-      int me = max_e(s, [](const int i) { return i; });
-      REQUIRE(me == 32);
+      int me = max_e(s, [](const int i) { return -i; });
+      REQUIRE(me == -69);
     }
     
   }

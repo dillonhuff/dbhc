@@ -511,6 +511,11 @@ namespace gca {
 			  [f](const I& l, const I& r) { return f(l) < f(r); });
     }
 
+    static
+    result_type apply(const std::vector<I>& e) {
+      return *min_element(begin(e), end(e));
+    }
+    
   };
 
   template<typename I>
@@ -525,6 +530,11 @@ namespace gca {
 			  [f](const I& l, const I& r) { return f(l) < f(r); });
     }
 
+    static
+    result_type apply(const std::set<I>& e) {
+      return *min_element(begin(e), end(e));
+    }
+    
   };
   
   template<typename A, typename F>
@@ -570,9 +580,11 @@ namespace gca {
     return max_e_impl<A>::apply(e, f);
   }
 
-  template<typename T>
-  T min_e(const std::vector<T>& e) {
-    return *min_element(begin(e), end(e), [](const T& l, const T& r) { return l < r; });
+  template<typename A>
+  typename min_e_impl<A>::result_type
+  min_e(const A& e) {
+    return min_e_impl<A>::apply(e);
+    //return *min_element(begin(e), end(e), [](const T& l, const T& r) { return l < r; });
   }
 
   template<typename T>
