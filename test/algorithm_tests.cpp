@@ -1,7 +1,9 @@
+#define CATCH_CONFIG_MAIN
+
 #include <vector>
 
 #include "catch.hpp"
-#include "utils/algorithm.h"
+#include "dbhc/algorithm.h"
 
 using namespace std;
 
