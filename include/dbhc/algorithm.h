@@ -512,6 +512,20 @@ namespace gca {
     }
 
   };
+
+  template<typename I>
+  class min_e_impl<std::set<I> > {
+  public:
+    typedef I result_type;
+
+    template<typename F>
+    static
+    result_type apply(const std::set<I>& e, F f) {
+      return *min_element(begin(e), end(e),
+			  [f](const I& l, const I& r) { return f(l) < f(r); });
+    }
+
+  };
   
   template<typename A, typename F>
   typename min_e_impl<A>::result_type

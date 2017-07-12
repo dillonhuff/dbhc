@@ -19,11 +19,11 @@ namespace gca {
       REQUIRE(me == -69);
     }
 
-    // SECTION("set of int") {
-    //   set<int> s(v.begin(), v.end());
-    //   int me = min_e(s);
-    //   REQUIRE(me == -69);
-    // }
+    SECTION("set of int") {
+      set<int> s(v.begin(), v.end());
+      int me = min_e(s, [](const int i) { return -i; });
+      REQUIRE(me == 32);
+    }
   }
 
   TEST_CASE("greedy_adjacent_chains") {
