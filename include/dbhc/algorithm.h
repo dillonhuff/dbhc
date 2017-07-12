@@ -531,7 +531,6 @@ namespace gca {
   typename min_e_impl<A>::result_type
   min_e(const A& e, F f) {
     return min_e_impl<A>::apply(e, f);
-    //return *min_element(begin(e), end(e), [f](const T& l, const T& r) { return f(l) < f(r); });
   }
 
   template<typename T, typename F>
