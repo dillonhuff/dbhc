@@ -602,6 +602,10 @@ namespace gca {
     return max_e_impl<A>::apply(e);
   }
 
+
+  template<typename A>
+  class sort_impl;
+
   template<typename T, typename F>
   void sort_lt(std::vector<T>& e, F f) {
     std::sort(begin(e), end(e), [f](const T& l, const T& r) { return f(l) < f(r); });

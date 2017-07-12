@@ -10,7 +10,7 @@ using namespace std;
 // TODO: Change to dbhc
 namespace gca {
 
-  TEST_CASE("Min / max") {
+  TEST_CASE("min / max / sorting") {
 
     vector<int> v{1, 3, 1, 4, 2, -69, 32};
 
@@ -35,7 +35,7 @@ namespace gca {
       int me = min_e(s);
       REQUIRE(me == -69);
     }
-    
+
     SECTION("max_e vector") {
       int me = max_e(v, [](const int i) { return i; });
       REQUIRE(me == 32);
@@ -56,6 +56,13 @@ namespace gca {
       set<int> s(v.begin(), v.end());
       int me = max_e(s);
       REQUIRE(me == 32);
+    }
+
+    SECTION("sort_lt vector") {
+      sort_lt(v, [](const int i) { return i; });
+
+      REQUIRE(v[0] == -69);
+      REQUIRE(v[1] == 1);
     }
     
   }
