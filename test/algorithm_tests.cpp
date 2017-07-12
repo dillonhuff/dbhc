@@ -24,6 +24,18 @@ namespace gca {
       int me = min_e(s, [](const int i) { return -i; });
       REQUIRE(me == 32);
     }
+
+    SECTION("max_e") {
+      int me = max_e(v, [](const int i) { return i; });
+      REQUIRE(me == 32);
+    }
+
+    SECTION("max_e") {
+      set<int> s(v.begin(), v.end());
+      int me = max_e(s, [](const int i) { return i; });
+      REQUIRE(me == 32);
+    }
+    
   }
 
   TEST_CASE("greedy_adjacent_chains") {
