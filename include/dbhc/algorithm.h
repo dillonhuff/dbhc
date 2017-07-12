@@ -600,7 +600,6 @@ namespace gca {
   typename max_e_impl<A>::result_type
   max_e(const A& e) {
     return max_e_impl<A>::apply(e);
-    //return *max_element(begin(e), end(e), [](const T& l, const T& r) { return l < r; });
   }
 
   template<typename T, typename F>
