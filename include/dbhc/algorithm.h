@@ -10,7 +10,7 @@
 #include <utility>
 #include <vector>
 
-#include "dbhc/check.h"
+#include <dbhc/check.h>
 
 namespace gca {
 
