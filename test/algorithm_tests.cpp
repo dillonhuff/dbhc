@@ -7,12 +7,23 @@
 
 using namespace std;
 
+// TODO: Change to dbhc
 namespace gca {
 
   TEST_CASE("min_e") {
+
     vector<int> v{1, 3, 1, 4, 2, -69, 32};
-    int me = min_e(v);
-    REQUIRE(me == -69);
+
+    SECTION("vector of int") {
+      int me = min_e(v, [](const int i) { return i; });
+      REQUIRE(me == -69);
+    }
+
+    // SECTION("set of int") {
+    //   set<int> s(v.begin(), v.end());
+    //   int me = min_e(s);
+    //   REQUIRE(me == -69);
+    // }
   }
 
   TEST_CASE("greedy_adjacent_chains") {
