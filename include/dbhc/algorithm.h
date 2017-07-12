@@ -496,8 +496,8 @@ namespace gca {
     std::reverse(begin(t), end(t));
   }
 
-  template<typename T, typename F>
-  T min_e(const std::vector<T>& e, F f) {
+  template<typename R, typename T, typename F>
+  T min_e(const R& e, F f) {
     return *min_element(begin(e), end(e), [f](const T& l, const T& r) { return f(l) < f(r); });
   }
 
