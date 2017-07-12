@@ -66,6 +66,12 @@ namespace dbhc {
     
   }
 
+  TEST_CASE("elem") {
+    unordered_set<int> s{1, 2, 3, 4, 93, -9, 0};
+    REQUIRE(elem(3, s));
+  }
+      
+
   TEST_CASE("greedy_adjacent_chains") {
 
     SECTION("Empty vector") {
