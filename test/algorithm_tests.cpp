@@ -46,6 +46,17 @@ namespace gca {
       int me = max_e(s, [](const int i) { return -i; });
       REQUIRE(me == -69);
     }
+
+    SECTION("max_e vector default") {
+      int me = max_e(v);
+      REQUIRE(me == 32);
+    }
+
+    SECTION("max_e set default") {
+      set<int> s(v.begin(), v.end());
+      int me = max_e(s);
+      REQUIRE(me == 32);
+    }
     
   }
 
