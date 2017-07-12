@@ -1,5 +1,5 @@
-#ifndef GCA_SYSTEM_ALGORITHM_H
-#define GCA_SYSTEM_ALGORITHM_H
+#ifndef DBHC_ALGORITHM_H
+#define DBHC_ALGORITHM_H
 
 #include <cassert>
 #include <iostream>
@@ -12,7 +12,7 @@
 
 #include <dbhc/check.h>
 
-namespace gca {
+namespace dbhc {
 
   template<typename T>
   int num_elems(std::vector<std::vector<T>>& v) {

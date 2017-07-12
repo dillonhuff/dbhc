@@ -7,8 +7,7 @@
 
 using namespace std;
 
-// TODO: Change to dbhc
-namespace gca {
+namespace dbhc {
 
   TEST_CASE("min / max / sorting") {
 
