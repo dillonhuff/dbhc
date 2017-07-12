@@ -9,6 +9,12 @@ using namespace std;
 
 namespace gca {
 
+  TEST_CASE("min_e") {
+    vector<int> v{1, 3, 1, 4, 2, -69, 32};
+    int me = min_e(v);
+    REQUIRE(me == -69);
+  }
+
   TEST_CASE("greedy_adjacent_chains") {
 
     SECTION("Empty vector") {
