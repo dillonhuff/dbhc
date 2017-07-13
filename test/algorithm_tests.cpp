@@ -67,8 +67,31 @@ namespace dbhc {
   }
 
   TEST_CASE("elem") {
-    unordered_set<int> s{1, 2, 3, 4, 93, -9, 0};
-    REQUIRE(elem(3, s));
+
+    SECTION("unordered_set<int>") {
+      unordered_set<int> s{1, 2, 3, 4, 93, -9, 0};
+      REQUIRE(elem(3, s));
+    }
+
+    SECTION("set<int>") {
+      set<int> s{1, 2, 3, 4, 93, -9, 0};
+      REQUIRE(elem(3, s));
+    }
+
+  }
+
+  TEST_CASE("Intersection") {
+    SECTION("Two vectors") {
+      vector<int> a{1, 2, 5, 234, 9};
+      vector<int> b{1, 2321, 5};
+
+      vector<int> it =
+	intersection(a, b);
+
+      REQUIRE(it.size() == 2);
+      REQUIRE(it[0] == 1);
+      REQUIRE(it[1] == 5);
+    }
   }
       
 

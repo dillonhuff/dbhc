@@ -50,6 +50,11 @@ namespace dbhc {
     return t.find(e) != end(t);
   }
 
+  template<typename T>
+  bool elem(T e, const std::set<T>& t) {
+    return t.find(e) != end(t);
+  }
+  
   template<typename InputIt, typename OutputIt, typename F>
   OutputIt apply_between(InputIt s, InputIt e, OutputIt r, F f) {
     while (s != (e - 1)) {
@@ -372,7 +377,7 @@ namespace dbhc {
   typename intersection_impl<const A, const B>::result_type
   intersection(const A l, const B r) {
     return intersection_impl<const A, const B>::apply(l, r);
-  }  
+  }
   
   template<typename I>
   std::vector<I> concat_all(const std::vector<std::vector<I>>& vs) {
@@ -601,10 +606,6 @@ namespace dbhc {
   max_e(const A& e) {
     return max_e_impl<A>::apply(e);
   }
-
-
-  template<typename A>
-  class sort_impl;
 
   template<typename T, typename F>
   void sort_lt(std::vector<T>& e, F f) {
