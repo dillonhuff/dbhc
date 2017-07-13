@@ -384,6 +384,18 @@ namespace dbhc {
     }
     return it;
   }  
+
+  template<typename A>
+  std::unordered_set<A>
+  intersection(const std::unordered_set<A>& l, const std::unordered_set<A>& r) {
+    std::unordered_set<A> it;
+    for (auto& e : l) {
+      if (elem(e, r)) {
+	it.insert(e);
+      }
+    }
+    return it;
+  }  
   
   template<typename A, typename B>
   typename intersection_impl<const A, const B>::result_type
