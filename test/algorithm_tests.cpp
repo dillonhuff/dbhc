@@ -81,10 +81,10 @@ namespace dbhc {
   }
 
   TEST_CASE("Intersection") {
-    SECTION("Two vectors") {
-      vector<int> a{1, 2, 5, 234, 9};
-      vector<int> b{1, 2321, 5};
+    vector<int> a{1, 2, 5, 234, 9};
+    vector<int> b{1, 2321, 5};
 
+    SECTION("Two vectors") {
       vector<int> it =
 	intersection(a, b);
 
@@ -92,6 +92,19 @@ namespace dbhc {
       REQUIRE(it[0] == 1);
       REQUIRE(it[1] == 5);
     }
+
+    SECTION("Two sets") {
+
+      set<int> set_a(a.begin(), a.end());
+      set<int> set_b(b.begin(), b.end());
+
+      set<int> it = intersection(set_a, set_b);
+
+      REQUIRE(it.size() == 2);
+      REQUIRE(elem(1, it));
+      REQUIRE(elem(5, it));
+    }
+
   }
       
 

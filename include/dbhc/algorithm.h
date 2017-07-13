@@ -373,6 +373,18 @@ namespace dbhc {
     return intersection_impl<const A&, const B&>::apply(l, r);
   }  
 
+  template<typename A>
+  std::set<A>
+  intersection(const std::set<A>& l, const std::set<A>& r) {
+    std::set<A> it;
+    for (auto& e : l) {
+      if (elem(e, r)) {
+	it.insert(e);
+      }
+    }
+    return it;
+  }  
+  
   template<typename A, typename B>
   typename intersection_impl<const A, const B>::result_type
   intersection(const A l, const B r) {
