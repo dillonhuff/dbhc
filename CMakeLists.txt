@@ -14,13 +14,13 @@ SET(EXTRA_CXX_COMPILE_FLAGS "-std=c++11 -I./src -I./test -I/opt/local/include -O
 
 SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${EXTRA_CXX_COMPILE_FLAGS}")
 
-INCLUDE_DIRECTORIES(./include/)
+INCLUDE_DIRECTORIES(./include/dbhc)
 
-SET(DBHC_HEADERS ./include/dbhc/algorithm.h
-		 ./include/dbhc/check.h)
+SET(DBHC_HEADERS include/dbhc/algorithm.h
+		 include/dbhc/check.h)
 
 SET(TEST_FILES test/algorithm_tests.cpp)
 
 add_executable(all-tests ${TEST_FILES} ${MANUFACTURE_TEST_FILES})
 
-install(FILES ${DBHC_HEADERS} DESTINATION include)
+install(FILES ${DBHC_HEADERS} DESTINATION include/dbhc)
