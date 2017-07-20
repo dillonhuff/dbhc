@@ -550,7 +550,7 @@ namespace dbhc {
   };
 
   template<typename I>
-  class min_e_impl<std::deque<I>> > {
+  class min_e_impl<std::deque<I>> {
   public:
     typedef I result_type;
 
