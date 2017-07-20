@@ -13,57 +13,92 @@ namespace dbhc {
 
     vector<int> v{1, 3, 1, 4, 2, -69, 32};
 
-    SECTION("min_e vector") {
-      int me = min_e(v, [](const int i) { return i; });
-      REQUIRE(me == -69);
-    }
+    SECTION("Vector") {
 
-    SECTION("min_e set") {
-      set<int> s(v.begin(), v.end());
-      int me = min_e(s, [](const int i) { return -i; });
-      REQUIRE(me == 32);
-    }
+      SECTION("min_e vector") {
+	int me = min_e(v, [](const int i) { return i; });
+	REQUIRE(me == -69);
+      }
 
-    SECTION("min_e vector default") {
-      int me = min_e(v);
-      REQUIRE(me == -69);
-    }
+      SECTION("min_e vector default") {
+	int me = min_e(v);
+	REQUIRE(me == -69);
+      }
 
-    SECTION("min_e set default") {
-      set<int> s(v.begin(), v.end());
-      int me = min_e(s);
-      REQUIRE(me == -69);
-    }
+      SECTION("max_e vector") {
+	int me = max_e(v, [](const int i) { return i; });
+	REQUIRE(me == 32);
+      }
 
-    SECTION("max_e vector") {
-      int me = max_e(v, [](const int i) { return i; });
-      REQUIRE(me == 32);
-    }
+      SECTION("max_e vector default") {
+	int me = max_e(v);
+	REQUIRE(me == 32);
+      }
 
-    SECTION("max_e set") {
-      set<int> s(v.begin(), v.end());
-      int me = max_e(s, [](const int i) { return -i; });
-      REQUIRE(me == -69);
-    }
 
-    SECTION("max_e vector default") {
-      int me = max_e(v);
-      REQUIRE(me == 32);
-    }
+      SECTION("sort_lt vector") {
+	sort_lt(v, [](const int i) { return i; });
 
-    SECTION("max_e set default") {
-      set<int> s(v.begin(), v.end());
-      int me = max_e(s);
-      REQUIRE(me == 32);
-    }
-
-    SECTION("sort_lt vector") {
-      sort_lt(v, [](const int i) { return i; });
-
-      REQUIRE(v[0] == -69);
-      REQUIRE(v[1] == 1);
-    }
+	REQUIRE(v[0] == -69);
+	REQUIRE(v[1] == 1);
+      }
     
+    }
+
+    SECTION("Deque") {
+      SECTION("min_e") {
+	deque<int> s(v.begin(), v.end());
+	int me = min_e(s, [](const int i) { return -i; });
+	REQUIRE(me == 32);
+      }
+
+      SECTION("min_e deque default") {
+	deque<int> s(v.begin(), v.end());
+	int me = min_e(s);
+	REQUIRE(me == -69);
+      }
+
+      SECTION("max_e deque") {
+	deque<int> s(v.begin(), v.end());
+	int me = max_e(s, [](const int i) { return -i; });
+	REQUIRE(me == -69);
+      }
+
+      SECTION("max_e deque default") {
+	deque<int> s(v.begin(), v.end());
+	int me = max_e(s);
+	REQUIRE(me == 32);
+      }
+
+    }
+
+    SECTION("set") {
+
+      SECTION("min_e set") {
+	set<int> s(v.begin(), v.end());
+	int me = min_e(s, [](const int i) { return -i; });
+	REQUIRE(me == 32);
+      }
+
+      SECTION("min_e set default") {
+	set<int> s(v.begin(), v.end());
+	int me = min_e(s);
+	REQUIRE(me == -69);
+      }
+
+      SECTION("max_e set") {
+	set<int> s(v.begin(), v.end());
+	int me = max_e(s, [](const int i) { return -i; });
+	REQUIRE(me == -69);
+      }
+
+      SECTION("max_e set default") {
+	set<int> s(v.begin(), v.end());
+	int me = max_e(s);
+	REQUIRE(me == 32);
+      }
+    }
+
   }
 
   TEST_CASE("elem") {
