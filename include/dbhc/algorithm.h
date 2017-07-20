@@ -4,6 +4,7 @@
 #include <cassert>
 #include <iostream>
 #include <map>
+#include <deque>
 #include <numeric>
 #include <set>
 #include <unordered_map>
@@ -549,6 +550,25 @@ namespace dbhc {
   };
 
   template<typename I>
+  class min_e_impl<std::deque<I>> > {
+  public:
+    typedef I result_type;
+
+    template<typename F>
+    static
+    result_type apply(const std::deque<I>& e, F f) {
+      return *min_element(begin(e), end(e),
+			  [f](const I& l, const I& r) { return f(l) < f(r); });
+    }
+
+    static
+    result_type apply(const std::deque<I>& e) {
+      return *min_element(begin(e), end(e));
+    }
+    
+  };
+  
+  template<typename I>
   class min_e_impl<std::set<I> > {
   public:
     typedef I result_type;
@@ -595,6 +615,25 @@ namespace dbhc {
     
   };
 
+  template<typename I>
+  class max_e_impl<std::deque<I> > {
+  public:
+    typedef I result_type;
+
+    template<typename F>
+    static
+    result_type apply(const std::deque<I>& e, F f) {
+      return *max_element(begin(e), end(e),
+			  [f](const I& l, const I& r) { return f(l) < f(r); });
+    }
+
+    static
+    result_type apply(const std::deque<I>& e) {
+      return *max_element(begin(e), end(e));
+    }
+    
+  };
+  
   template<typename I>
   class max_e_impl<std::set<I> > {
   public:

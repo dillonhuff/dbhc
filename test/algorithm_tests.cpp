@@ -3,7 +3,8 @@
 #include <vector>
 
 #include "catch.hpp"
-#include <dbhc/algorithm.h>
+#include <deque>
+#include "dbhc/algorithm.h"
 
 using namespace std;
 
