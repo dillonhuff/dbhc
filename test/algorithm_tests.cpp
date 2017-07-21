@@ -4,6 +4,7 @@
 
 #include "catch.hpp"
 #include <deque>
+
 #include <dbhc/algorithm.h>
 
 using namespace std;
