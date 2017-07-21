@@ -141,11 +141,22 @@ namespace dbhc {
       REQUIRE(elem(5, it));
     }
 
-    SECTION("Two unorderedsets") {
+    SECTION("Two unordered sets") {
       unordered_set<int> set_a(a.begin(), a.end());
       unordered_set<int> set_b(b.begin(), b.end());
 
       unordered_set<int> it = intersection(set_a, set_b);
+
+      REQUIRE(it.size() == 2);
+      REQUIRE(elem(1, it));
+      REQUIRE(elem(5, it));
+    }
+
+    SECTION("Two deques") {
+      deque<int> set_a(a.begin(), a.end());
+      deque<int> set_b(b.begin(), b.end());
+
+      deque<int> it = intersection(set_a, set_b);
 
       REQUIRE(it.size() == 2);
       REQUIRE(elem(1, it));

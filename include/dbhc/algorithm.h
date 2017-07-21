@@ -53,6 +53,11 @@ namespace dbhc {
   }
 
   template<typename T>
+  bool elem(T e, const std::deque<T>& t) {
+    return std::find(begin(t), end(t), e) != end(t);
+  }
+  
+  template<typename T>
   bool elem(T e, const std::set<T>& t) {
     return t.find(e) != end(t);
   }
@@ -387,6 +392,18 @@ namespace dbhc {
     return it;
   }  
 
+  template<typename A>
+  std::deque<A>
+  intersection(const std::deque<A>& l, const std::deque<A>& r) {
+    std::deque<A> it;
+    for (auto& e : l) {
+      if (elem(e, r)) {
+	it.push_back(e);
+      }
+    }
+    return it;
+  }  
+  
   template<typename A>
   std::unordered_set<A>
   intersection(const std::unordered_set<A>& l, const std::unordered_set<A>& r) {
