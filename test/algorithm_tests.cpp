@@ -5,7 +5,7 @@
 #include "catch.hpp"
 #include <deque>
 
-#include <dbhc/algorithm.h>
+#include "dbhc/algorithm.h"
 
 using namespace std;
 
@@ -48,29 +48,29 @@ namespace dbhc {
     }
 
     SECTION("Deque") {
-      // SECTION("min_e") {
-      // 	deque<int> s(v.begin(), v.end());
-      // 	int me = min_e(s, [](const int i) { return -i; });
-      // 	REQUIRE(me == 32);
-      // }
+      SECTION("min_e") {
+      	deque<int> s(v.begin(), v.end());
+      	int me = min_e(s, [](const int i) { return -i; });
+      	REQUIRE(me == 32);
+      }
 
-      // SECTION("min_e deque default") {
-      // 	deque<int> s(v.begin(), v.end());
-      // 	int me = min_e(s);
-      // 	REQUIRE(me == -69);
-      // }
+      SECTION("min_e deque default") {
+      	deque<int> s(v.begin(), v.end());
+      	int me = min_e(s);
+      	REQUIRE(me == -69);
+      }
 
-      // SECTION("max_e deque") {
-      // 	deque<int> s(v.begin(), v.end());
-      // 	int me = max_e(s, [](const int i) { return -i; });
-      // 	REQUIRE(me == -69);
-      // }
+      SECTION("max_e deque") {
+      	deque<int> s(v.begin(), v.end());
+      	int me = max_e(s, [](const int i) { return -i; });
+      	REQUIRE(me == -69);
+      }
 
-      // SECTION("max_e deque default") {
-      // 	deque<int> s(v.begin(), v.end());
-      // 	int me = max_e(s);
-      // 	REQUIRE(me == 32);
-      // }
+      SECTION("max_e deque default") {
+      	deque<int> s(v.begin(), v.end());
+      	int me = max_e(s);
+      	REQUIRE(me == 32);
+      }
 
     }
 
