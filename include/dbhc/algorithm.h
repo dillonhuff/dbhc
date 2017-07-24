@@ -6,6 +6,7 @@
 #include <map>
 #include <deque>
 #include <list>
+#include <forward_list>
 #include <numeric>
 #include <set>
 #include <unordered_map>
@@ -718,6 +719,28 @@ namespace dbhc {
 
   template<typename T>
   T min_e(const std::list<T>& e) {
+    return *min_element(begin(e), end(e));
+  }
+
+  template<typename T, typename F>
+  T max_e(const std::forward_list<T>& e, F f) {
+    return *max_element(begin(e), end(e),
+			[f](const T& l, const T& r) { return f(l) < f(r); });
+  }
+
+  template<typename T>
+  T max_e(const std::forward_list<T>& e) {
+    return *max_element(begin(e), end(e));
+  }
+
+  template<typename T, typename F>
+  T min_e(const std::forward_list<T>& e, F f) {
+    return *min_element(begin(e), end(e),
+			[f](const T& l, const T& r) { return f(l) < f(r); });
+  }
+
+  template<typename T>
+  T min_e(const std::forward_list<T>& e) {
     return *min_element(begin(e), end(e));
   }
   

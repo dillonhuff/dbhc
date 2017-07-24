@@ -100,6 +100,33 @@ namespace dbhc {
       }
 
     }
+
+    SECTION("forward_list") {
+      SECTION("min_e") {
+      	forward_list<int> s(v.begin(), v.end());
+      	int me = min_e(s, [](const int i) { return -i; });
+      	REQUIRE(me == 32);
+      }
+
+      SECTION("min_e forward_list default") {
+      	forward_list<int> s(v.begin(), v.end());
+      	int me = min_e(s);
+      	REQUIRE(me == -69);
+      }
+
+      SECTION("max_e forward_list") {
+      	forward_list<int> s(v.begin(), v.end());
+      	int me = max_e(s, [](const int i) { return -i; });
+      	REQUIRE(me == -69);
+      }
+
+      SECTION("max_e forward_list default") {
+      	forward_list<int> s(v.begin(), v.end());
+      	int me = max_e(s);
+      	REQUIRE(me == 32);
+      }
+
+    }
     
     SECTION("set") {
 
