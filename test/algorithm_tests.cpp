@@ -101,6 +101,33 @@ namespace dbhc {
       }
     }
 
+    SECTION("unordered set") {
+
+      SECTION("min_e set") {
+	unordered_set<int> s(v.begin(), v.end());
+	int me = min_e(s, [](const int i) { return -i; });
+	REQUIRE(me == 32);
+      }
+
+      SECTION("min_e unordered_set default") {
+	unordered_set<int> s(v.begin(), v.end());
+	int me = min_e(s);
+	REQUIRE(me == -69);
+      }
+
+      SECTION("max_e unordered_set") {
+	unordered_set<int> s(v.begin(), v.end());
+	int me = max_e(s, [](const int i) { return -i; });
+	REQUIRE(me == -69);
+      }
+
+      SECTION("max_e unordered_set default") {
+	unordered_set<int> s(v.begin(), v.end());
+	int me = max_e(s);
+	REQUIRE(me == 32);
+      }
+    }
+    
   }
 
   TEST_CASE("elem") {
