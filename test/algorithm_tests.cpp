@@ -74,6 +74,33 @@ namespace dbhc {
 
     }
 
+    SECTION("list") {
+      SECTION("min_e") {
+      	list<int> s(v.begin(), v.end());
+      	int me = min_e(s, [](const int i) { return -i; });
+      	REQUIRE(me == 32);
+      }
+
+      SECTION("min_e list default") {
+      	list<int> s(v.begin(), v.end());
+      	int me = min_e(s);
+      	REQUIRE(me == -69);
+      }
+
+      SECTION("max_e list") {
+      	list<int> s(v.begin(), v.end());
+      	int me = max_e(s, [](const int i) { return -i; });
+      	REQUIRE(me == -69);
+      }
+
+      SECTION("max_e list default") {
+      	list<int> s(v.begin(), v.end());
+      	int me = max_e(s);
+      	REQUIRE(me == 32);
+      }
+
+    }
+    
     SECTION("set") {
 
       SECTION("min_e set") {
@@ -132,6 +159,32 @@ namespace dbhc {
 
   TEST_CASE("elem") {
 
+    SECTION("vector<double>") {
+      vector<double> v{3.2, 9.3, -2.3, 123.3423};
+
+      SECTION("Contains") {
+	REQUIRE(elem(3.2, v));
+      }
+
+      SECTION("Does not contain") {
+	REQUIRE(!elem(3.24, v));
+      }
+
+    }
+
+    SECTION("deque<double>") {
+      deque<double> v{3.2, 9.3, -2.3, 123.3423};
+
+      SECTION("Contains") {
+	REQUIRE(elem(3.2, v));
+      }
+
+      SECTION("Does not contain") {
+	REQUIRE(!elem(3.24, v));
+      }
+
+    }
+    
     SECTION("unordered_set<int>") {
       unordered_set<int> s{1, 2, 3, 4, 93, -9, 0};
       REQUIRE(elem(3, s));
