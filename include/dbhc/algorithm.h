@@ -615,25 +615,36 @@ namespace dbhc {
   template<typename A>
   class max_e_impl;
 
-  template<typename I>
-  class max_e_impl<std::vector<I> > {
-  public:
-    typedef I result_type;
+  // template<typename I>
+  // class max_e_impl<std::vector<I> > {
+  // public:
+  //   typedef I result_type;
 
-    template<typename F>
-    static
-    result_type apply(const std::vector<I>& e, F f) {
-      return *max_element(begin(e), end(e),
-			  [f](const I& l, const I& r) { return f(l) < f(r); });
-    }
+  //   template<typename F>
+  //   static
+  //   result_type apply(const std::vector<I>& e, F f) {
+  //     return *max_element(begin(e), end(e),
+  // 			  [f](const I& l, const I& r) { return f(l) < f(r); });
+  //   }
 
-    static
-    result_type apply(const std::vector<I>& e) {
-      return *max_element(begin(e), end(e));
-    }
+  //   static
+  //   result_type apply(const std::vector<I>& e) {
+  //     return *max_element(begin(e), end(e));
+  //   }
     
-  };
+  // };
 
+  template<typename T, typename F>
+  T max_e(const std::vector<T>& e, F f) {
+    return *max_element(begin(e), end(e),
+			[f](const T& l, const T& r) { return f(l) < f(r); });
+  }
+
+  template<typename T>
+  T max_e(const std::vector<T>& e) {
+    return *max_element(begin(e), end(e));
+  }
+  
   template<typename I>
   class max_e_impl<std::deque<I> > {
   public:
