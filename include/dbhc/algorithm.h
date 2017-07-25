@@ -14,7 +14,7 @@
 #include <utility>
 #include <vector>
 
-#include "dbhc/check.h"
+#define DBG_ASSERT(x) assert(x)
 
 namespace dbhc {
 
