@@ -1,6 +1,7 @@
 #ifndef DBHC_ALGORITHM_H
 #define DBHC_ALGORITHM_H
 
+#include <array>
 #include <cassert>
 #include <iostream>
 #include <map>
@@ -355,32 +356,32 @@ namespace dbhc {
   }
 
 
-  template<typename A, typename B>
-  class intersection_impl;
+  // template<typename A, typename B>
+  // class intersection_impl;
 
-  template<typename I>
-  class intersection_impl<const std::vector<I>&, const std::vector<I>&> {
-  public:
-    typedef std::vector<I> result_type;
+  // template<typename I>
+  // class intersection_impl<const std::vector<I>&, const std::vector<I>&> {
+  // public:
+  //   typedef std::vector<I> result_type;
 
-    static
-    result_type apply(const std::vector<I>& l, const std::vector<I>& r) {
-      result_type inter;
-      for (auto i : l) {
-	if (elem(i, r)) {
-	  inter.push_back(i);
-	}
-      }
-      return inter;
-    }
+  //   static
+  //   result_type apply(const std::vector<I>& l, const std::vector<I>& r) {
+  //     result_type inter;
+  //     for (auto i : l) {
+  // 	if (elem(i, r)) {
+  // 	  inter.push_back(i);
+  // 	}
+  //     }
+  //     return inter;
+  //   }
 
-  };
+  // };
 
-  template<typename A, typename B>
-  typename intersection_impl<const A&, const B&>::result_type
-  intersection(const A& l, const B& r) {
-    return intersection_impl<const A&, const B&>::apply(l, r);
-  }  
+  // template<typename A, typename B>
+  // typename intersection_impl<const A&, const B&>::result_type
+  // intersection(const A& l, const B& r) {
+  //   return intersection_impl<const A&, const B&>::apply(l, r);
+  // }  
 
   template<typename A>
   std::set<A>
@@ -405,6 +406,18 @@ namespace dbhc {
     }
     return it;
   }  
+
+  template<typename A>
+  std::vector<A>
+  intersection(const std::vector<A>& l, const std::vector<A>& r) {
+    std::vector<A> it;
+    for (auto& e : l) {
+      if (elem(e, r)) {
+	it.push_back(e);
+      }
+    }
+    return it;
+  }  
   
   template<typename A>
   std::unordered_set<A>
@@ -417,12 +430,6 @@ namespace dbhc {
     }
     return it;
   }  
-  
-  template<typename A, typename B>
-  typename intersection_impl<const A, const B>::result_type
-  intersection(const A l, const B r) {
-    return intersection_impl<const A, const B>::apply(l, r);
-  }
   
   template<typename I>
   std::vector<I> concat_all(const std::vector<std::vector<I>>& vs) {
@@ -579,6 +586,11 @@ namespace dbhc {
     return *min_element(begin(e), end(e));
   }
 
+  // template<typename T, unsigned long I>
+  // T max_e(const std::array<T, I>& e) {
+  //   return *max_element(e.begin(), e.end());
+  // }
+  
   template<typename T, typename F>
   T max_e(const std::vector<T>& e, F f) {
     return *max_element(begin(e), end(e),

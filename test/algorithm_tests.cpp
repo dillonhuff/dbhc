@@ -181,6 +181,20 @@ namespace dbhc {
 	REQUIRE(me == 32);
       }
     }
+
+    SECTION("array") {
+
+      SECTION("min_e array") {
+	array<int, 5> marray = {{2, -4, 1, 123, 4}};
+
+	//int me = max_e(marray);
+
+	auto me = max_element(marray.begin(), marray.end());
+	auto me2 = max_element(begin(marray), end(marray));
+
+	  //REQUIRE(me == 123);
+      }
+    }
     
   }
 
