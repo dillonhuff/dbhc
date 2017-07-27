@@ -283,9 +283,57 @@ namespace dbhc {
       REQUIRE(elem(1, it));
       REQUIRE(elem(5, it));
     }
-    
+
   }
-      
+
+  TEST_CASE("Difference") {
+    vector<int> a{1, 2, 5, 234, 9};
+    vector<int> b{1, 2321, 5};
+
+    SECTION("Two vectors") {
+      vector<int> it =
+	difference(a, b);
+
+      REQUIRE(it.size() == 3);
+      REQUIRE(it[0] == 2);
+      REQUIRE(it[1] == 234);
+      REQUIRE(it[2] == 9);
+    }
+
+    SECTION("Two sets") {
+      set<int> set_a(a.begin(), a.end());
+      set<int> set_b(b.begin(), b.end());
+
+      set<int> it = intersection(set_a, set_b);
+
+      REQUIRE(it.size() == 2);
+      REQUIRE(elem(1, it));
+      REQUIRE(elem(5, it));
+    }
+
+    SECTION("Two unordered sets") {
+      unordered_set<int> set_a(a.begin(), a.end());
+      unordered_set<int> set_b(b.begin(), b.end());
+
+      unordered_set<int> it = intersection(set_a, set_b);
+
+      REQUIRE(it.size() == 2);
+      REQUIRE(elem(1, it));
+      REQUIRE(elem(5, it));
+    }
+
+    SECTION("Two deques") {
+      deque<int> set_a(a.begin(), a.end());
+      deque<int> set_b(b.begin(), b.end());
+
+      deque<int> it = intersection(set_a, set_b);
+
+      REQUIRE(it.size() == 2);
+      REQUIRE(elem(1, it));
+      REQUIRE(elem(5, it));
+    }
+  }
+    
 
   TEST_CASE("greedy_adjacent_chains") {
 

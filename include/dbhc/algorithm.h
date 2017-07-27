@@ -165,6 +165,13 @@ namespace dbhc {
     c.erase(remove_if(begin(c), end(c), f), end(c));
   }
 
+  template<typename T>
+  void subtract(T& a, const T& b) {
+    delete_if(a,
+	      [&b](const typename T::value_type& i)
+	      { return std::find(begin(b), end(b), i) != end(b); });
+  }
+
   template<typename T, typename Q>
   std::pair<T, Q>
   mk_pair(T t, Q q) { return std::pair<T, Q>(t, q); }
@@ -196,13 +203,6 @@ namespace dbhc {
     auto r = find_if_not(begin(t), end(t), f);
     auto s = distance(begin(t), r);
     t.erase(begin(t) + s, end(t));
-  }
-
-  template<typename T>
-  void subtract(T& a, const T& b) {
-    delete_if(a,
-	      [&b](const typename T::value_type& i)
-	      { return std::find(begin(b), end(b), i) != end(b); });
   }
 
   template<typename T, typename F>
@@ -355,6 +355,9 @@ namespace dbhc {
     return cp_elems;
   }
 
+  // Set Operations
+
+  // Start intersection
   template<typename A>
   std::set<A>
   intersection(const std::set<A>& l, const std::set<A>& r) {
@@ -401,7 +404,22 @@ namespace dbhc {
       }
     }
     return it;
-  }  
+  }
+
+  // End intersection
+
+  // Start difference
+
+  template<typename T>
+  std::vector<T> difference(const std::vector<T>& a,
+			    const std::vector<T>& b) {
+    std::vector<T> diff = a;
+    subtract(diff, b);
+
+    return diff;
+  }
+
+  // End union
   
   template<typename I>
   std::vector<I> concat_all(const std::vector<std::vector<I>>& vs) {
