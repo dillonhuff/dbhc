@@ -355,34 +355,6 @@ namespace dbhc {
     return cp_elems;
   }
 
-
-  // template<typename A, typename B>
-  // class intersection_impl;
-
-  // template<typename I>
-  // class intersection_impl<const std::vector<I>&, const std::vector<I>&> {
-  // public:
-  //   typedef std::vector<I> result_type;
-
-  //   static
-  //   result_type apply(const std::vector<I>& l, const std::vector<I>& r) {
-  //     result_type inter;
-  //     for (auto i : l) {
-  // 	if (elem(i, r)) {
-  // 	  inter.push_back(i);
-  // 	}
-  //     }
-  //     return inter;
-  //   }
-
-  // };
-
-  // template<typename A, typename B>
-  // typename intersection_impl<const A&, const B&>::result_type
-  // intersection(const A& l, const B& r) {
-  //   return intersection_impl<const A&, const B&>::apply(l, r);
-  // }  
-
   template<typename A>
   std::set<A>
   intersection(const std::set<A>& l, const std::set<A>& r) {
