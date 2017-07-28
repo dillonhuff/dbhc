@@ -304,11 +304,13 @@ namespace dbhc {
       set<int> set_a(a.begin(), a.end());
       set<int> set_b(b.begin(), b.end());
 
-      set<int> it = intersection(set_a, set_b);
 
-      REQUIRE(it.size() == 2);
-      REQUIRE(elem(1, it));
-      REQUIRE(elem(5, it));
+      set<int> it = difference(set_a, set_b);
+
+      REQUIRE(it.size() == 3);
+      REQUIRE(elem(2, it));
+      REQUIRE(elem(234, it));
+      REQUIRE(elem(9, it));
     }
 
     SECTION("Two unordered sets") {

@@ -419,6 +419,19 @@ namespace dbhc {
     return diff;
   }
 
+  template<typename T>
+  std::set<T> difference(const std::set<T>& a,
+			 const std::set<T>& b) {
+    std::set<T> diff;
+    for (auto& e : a) {
+      if (!elem(e, b)) {
+	diff.insert(e);
+      }
+    }
+
+    return diff;
+  }
+  
   // End union
   
   template<typename I>
