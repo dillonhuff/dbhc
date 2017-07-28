@@ -317,22 +317,25 @@ namespace dbhc {
       unordered_set<int> set_a(a.begin(), a.end());
       unordered_set<int> set_b(b.begin(), b.end());
 
-      unordered_set<int> it = intersection(set_a, set_b);
+      unordered_set<int> it = difference(set_a, set_b);
 
-      REQUIRE(it.size() == 2);
-      REQUIRE(elem(1, it));
-      REQUIRE(elem(5, it));
+      REQUIRE(it.size() == 3);
+      REQUIRE(elem(2, it));
+      REQUIRE(elem(234, it));
+      REQUIRE(elem(9, it));
     }
 
     SECTION("Two deques") {
       deque<int> set_a(a.begin(), a.end());
       deque<int> set_b(b.begin(), b.end());
 
-      deque<int> it = intersection(set_a, set_b);
+      deque<int> it = difference(set_a, set_b);
 
-      REQUIRE(it.size() == 2);
-      REQUIRE(elem(1, it));
-      REQUIRE(elem(5, it));
+      REQUIRE(it.size() == 3);
+      REQUIRE(elem(2, it));
+      REQUIRE(elem(234, it));
+      REQUIRE(elem(9, it));
+      REQUIRE(!elem(100, it));
     }
   }
     

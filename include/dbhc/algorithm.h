@@ -431,8 +431,34 @@ namespace dbhc {
 
     return diff;
   }
+
+  template<typename T>
+  std::unordered_set<T> difference(const std::unordered_set<T>& a,
+				   const std::unordered_set<T>& b) {
+    std::unordered_set<T> diff;
+    for (auto& e : a) {
+      if (!elem(e, b)) {
+	diff.insert(e);
+      }
+    }
+
+    return diff;
+  }
+
+  template<typename T>
+  std::deque<T> difference(const std::deque<T>& a,
+			   const std::deque<T>& b) {
+    std::deque<T> diff;
+    for (auto& e : a) {
+      if (!elem(e, b)) {
+	diff.push_back(e);
+      }
+    }
+
+    return diff;
+  }
   
-  // End union
+  // End difference
   
   template<typename I>
   std::vector<I> concat_all(const std::vector<std::vector<I>>& vs) {
