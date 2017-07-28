@@ -362,11 +362,14 @@ namespace dbhc {
   std::set<A>
   intersection(const std::set<A>& l, const std::set<A>& r) {
     std::set<A> it;
-    for (auto& e : l) {
-      if (elem(e, r)) {
-	it.insert(e);
-      }
-    }
+    set_intersection(std::begin(l), std::end(l),
+		     std::begin(r), std::end(r),
+		     std::inserter(it, std::end(it)));
+    // for (auto& e : l) {
+    //   if (elem(e, r)) {
+    // 	it.insert(e);
+    //   }
+    // }
     return it;
   }  
 

@@ -182,20 +182,6 @@ namespace dbhc {
       }
     }
 
-    SECTION("array") {
-
-      SECTION("min_e array") {
-	array<int, 5> marray = {{2, -4, 1, 123, 4}};
-
-	//int me = max_e(marray);
-
-	auto me = max_element(marray.begin(), marray.end());
-	auto me2 = max_element(begin(marray), end(marray));
-
-	  //REQUIRE(me == 123);
-      }
-    }
-    
   }
 
   TEST_CASE("elem") {
@@ -298,6 +284,7 @@ namespace dbhc {
       REQUIRE(it[0] == 2);
       REQUIRE(it[1] == 234);
       REQUIRE(it[2] == 9);
+
     }
 
     SECTION("Two sets") {
@@ -338,7 +325,6 @@ namespace dbhc {
       REQUIRE(!elem(100, it));
     }
   }
-    
 
   TEST_CASE("greedy_adjacent_chains") {
 
