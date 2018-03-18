@@ -365,11 +365,6 @@ namespace dbhc {
     set_intersection(std::begin(l), std::end(l),
 		     std::begin(r), std::end(r),
 		     std::inserter(it, std::end(it)));
-    // for (auto& e : l) {
-    //   if (elem(e, r)) {
-    // 	it.insert(e);
-    //   }
-    // }
     return it;
   }  
 
@@ -503,6 +498,16 @@ namespace dbhc {
     return f->second;
   }
 
+  template<typename A, typename B>
+  B map_find(const A& a, const std::map<A, B>& m) {
+    auto f = m.find(a);
+    if (f == std::end(m)) {
+      DBG_ASSERT(false);
+    }
+
+    return f->second;
+  }
+  
   template<typename A, typename B>
   void map_insert(std::unordered_map<A, std::vector<B>>& m, A a, B b) {
     if (m.find(a) == std::end(m)) {
